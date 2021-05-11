@@ -8,9 +8,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         AddressBook addressFunction = new AddressBook();
 
-        while (true) {
+        boolean restart = true;
 
-            System.out.println("Please choose what you'd like to do with the address book: ");
+        while (restart) {
+
+            System.out.println("Please choose what you'd like to do with the address book: \n" +
+                    "1: Add a new entry \n" +
+                    "2: Delete a single entry \n" +
+                    "3: Search for an entry \n" +
+                    "4: Print the entire address book \n" +
+                    "5: Delete the whole address book \n" +
+                    "6: Quit the program \n"
+            );
+
             Integer userDecision = scanner.nextInt();
 
             switch (userDecision) {

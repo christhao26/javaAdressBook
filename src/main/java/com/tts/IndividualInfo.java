@@ -13,6 +13,10 @@ public class IndividualInfo {
         this.emailAddress = emailAddress;
     }
 
+    public IndividualInfo() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -49,8 +53,29 @@ public class IndividualInfo {
     public String toString() {
         return "First Name: " + firstName +
                 "; Last Name: " + lastName +
-                "; Phone Number: " + phoneNumber +
+                "; Phone Number: " + phoneNumberCorrector(phoneNumber) +
                 "; Email Address: " + emailAddress + ";"
                 ;
+    }
+
+    public boolean isValid(String emailAddress) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return emailAddress.matches(regex);
+    }
+
+    public String phoneNumberCorrector(String aPhoneNumber) {
+        StringBuilder sb = new StringBuilder(10);
+        StringBuilder temp = new StringBuilder(aPhoneNumber);
+        char[] chars = temp.toString().toCharArray();
+
+        sb.append("(");
+        for (int i = 0; i < chars.length; i++) {
+            if (i == 3)
+                sb.append(") ");
+            else if (i == 6)
+                sb.append("-");
+            sb.append(chars[i]);
+        }
+        return sb.toString();
     }
 }
